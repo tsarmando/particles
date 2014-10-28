@@ -28,8 +28,6 @@ int main(int argc, char **argv)
 	deltaT = atof(argv[2]);
 	double boundary[6];
 	for(i = 0; i < 6; i++)	boundary[i] = atof(argv[3+i]);
-	//vectr center = vectr((boundary[0]+boundary[1])/2, (boundary[2] + boundary[3])/2,
-//	(boundary[4]+boundary[5])/2);
 	vectr tl = vectr(boundary[0], boundary[3], boundary[4]);
 	vectr tr = vectr(boundary[1], boundary[2], boundary[5]);
 	vectr center = (tl+tr)/2;
@@ -69,21 +67,10 @@ void SingleStep (double deltaT,int nPartcl, Tree *treePtr,partcl **model, vectr 
 	  ComputeForces(model[i] , pmin,  pmax, treePtr); //acceleration	  
 	LeapfrogStep (1, nPartcl, deltaT, model,boundary);
 	LeapfrogStep (2, nPartcl, deltaT, model,boundary);
-	/* 
-	   EvalProps ();
-	   if (stepCount < stepEquil) AdjustInitTemp ();
-	   AccumProps (1);
-	   if (stepCount % stepAvg == 0) {
-	   AccumProps (2);
-	   PrintSummary (stdout);
-	   AccumProps (0);
-
-	   }
-	   c*/
 }
 
 
-//fix
+
 void LeapfrogStep (int part, int nPartcl, double deltaT, partcl **model,double boundary[6])
 {
 	int i;
@@ -125,6 +112,7 @@ void ComputeForces(partcl *element, vectr pmin, vectr pmax, Tree *treePtr)
 std::vector<partcl *> results2;
 vectr pmin2 = element->r - pmin;
 vectr pmax2 = element->r + pmax;
+//use tree code to find nearest neighbor
 treePtr->discPoints( pmin2,  pmax2, results2);
 for(std::vector<partcl *>::iterator it = results2.begin(); it != results2.end(); ++it)
 		{
