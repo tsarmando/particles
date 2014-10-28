@@ -10,3 +10,7 @@ The arguments for the program are:
 3. Six, real, end points representing the x,y,z lower and upper bounds. For example the cube centered at the orgin is given as: -1 1 -1 1 -1 1
 4. The max distance a point can interact with another point
 5. The number of steps
+
+An example would be 
+
+./forces 100 .5 -1 1 -1 1 -1 1 1 10
