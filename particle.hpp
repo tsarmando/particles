@@ -14,7 +14,6 @@ class partcl
 		double m, diam; 
 		//orientation of magnet, position vector, initial velocity
 		//acceleration
-		
 		vectr u, r, v, a;
 
 		
@@ -30,7 +29,7 @@ class partcl
 		
 }; 
 
-//a particle in our system
+
 vectr ComputeDipole(partcl *a, partcl *b); 
 vectr torque(partcl *a, partcl *b);  
 void seperation(partcl *a, partcl *b); 
