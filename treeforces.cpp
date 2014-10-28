@@ -9,7 +9,7 @@
 #include <fenv.h> 
 #include <time.h>
 #include <algorithm>
-#include "Stopwatch.h"
+
 
 void SingleStep (double deltaT,int nPartcl, Tree *treePtr,partcl **model, vectr pmin,  vectr pmax, double boundary[6]);
 void LeapfrogStep (int part, int nPartcl, double deltaT, partcl **model,double boundary[6]);
@@ -18,8 +18,8 @@ void ComputeForces(partcl *element, vectr pmin, vectr pmax, Tree *treePtr);
 
 int main(int argc, char **argv)
 {
-	double start = stopwatch();
-  srand(time(NULL));
+
+  
   //std::vector<partcl *> *results;
 	FILE *fp = fopen("filename", "w");
 	int  nPartcl, stepCount, stepLimit, i,cycles = 1;
@@ -59,9 +59,6 @@ int main(int argc, char **argv)
 		delete model[i];
 	delete[] model;
 	fclose(fp);
-	double time = stopwatch() - start;
-	printf("This took %f seconds", time);
-	fprintf(fp, "This took %f seconds", time);
 	return 1;
 	
 }
