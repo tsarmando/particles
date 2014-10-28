@@ -32,17 +32,6 @@ double vectr::distance(vectr b)
 {
 	return sqrt(pow(x - b.x,2)+ pow( y - b.y,2) + pow( z - b.z, 2 ));
 }
-/*
-vectr &vectr::operator+=(const vectr &b)
-{
-
-	x += b.x;
-	y += b.y;
-	z += b.z;
-	return *this;
-}
-*/
-
 
 
 vectr vectr::operator*(double f) const
@@ -76,20 +65,7 @@ vectr vectr::VAdd(vectr b)
 		z += b.z;
 	return *this;
 }
-/*
-static double sgn(double x)
-{
-	return (x >= 0)? 1 : -1;
-}
-static double bullshit(double x, double min, double max)
-{
-	double temp = fmod(x - min, max - min);
-	double rval = temp + sgn(temp) * (max - min);
-	rval = fmod(rval, max - min);
-	rval += min;
-	return rval;
-}
-*/
+
 static double wrapper(double x, double min, double max)
 {
 	double len = max - min;
@@ -105,29 +81,6 @@ void vectr::wrap(double boundary[6])
 	y = wrapper(y, boundary[2], boundary[3]);
 	z = wrapper(z, boundary[4], boundary[5]);
 }
-/*
-void vectr::wrap(double boundary[6])
-{
-	double lox = boundary[0];
-	double hix = boundary[1];
-	double loy = boundary[2];
-	double hiy = boundary[3];
-	double loz = boundary[4];
-	double hiz = boundary[5];
-
-	x -= lox;
-	y -= loy;
-	z -= loz;
-
-	x = fmod(x, hix - lox);	
-	y = fmod(y, hiy - loy);	
-	z = fmod(z, hiz - loz);	
-
-	x+=lox;
-	y+=loy;
-	z+=loz;
-}
-*/
 
 void vectr::collision(vectr x, vectr y)
 {
@@ -146,7 +99,7 @@ vectr RandVectr(double lowx, double upx, double lowy,
 		double upy, double lowz, double upz)
 {
 
-	//how to create random vector within given limits^
+	//how to create random vector within given limits
 	double x =  lowx +  (upx - lowx) * (double)(rand()-RAND_MIN) / (RAND_MAX-RAND_MIN);
 	//printf("%d\n" , lowx);
 	double y = lowy +  (upy - lowy) * (double)(rand()-RAND_MIN) / (RAND_MAX-RAND_MIN);
