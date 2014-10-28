@@ -4,7 +4,6 @@
 #include "vector.hpp"
 #include "particle.hpp"
 #include "tree.hpp"
-#include "TreePoint.hpp"
 #define xi1 3*M_PI*.894
 #include <fenv.h> 
 #include <time.h>
